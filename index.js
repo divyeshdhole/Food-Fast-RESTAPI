@@ -2,7 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios');
 require('dotenv').config();
-
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:1234',  // Allow requests from this origin
+    methods: 'GET,POST,PUT,DELETE',   // Specify allowed methods
+    allowedHeaders: 'Content-Type,Authorization'  // Specify allowed headers
+}));
 
 const connectionString = process.env.MONGO_URL || "mongodb://localhost:27017/swiggyData"
 // Connect to MongoDB
