@@ -105,7 +105,7 @@ app.get('/api/restaurant/menu/:restaurantId', async (req, res) => {
         }
 
         // Use dot notation to query nested fields
-        const menu = await Menu.findOne({ 'data.cards.2.card.card.info.id': restaurantId });
+        const menu = await Menu.findOne({ 'data.cards.2.card.card.info.id': parseInt(restaurantId) });
 
         if (menu) {
             // Respond with the full menu data
