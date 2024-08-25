@@ -129,7 +129,10 @@ app.get('/api/restaurants', async (req, res) => {
         return res.status(500).json({ error: 'Failed to fetch restaurant data' });
     }
 });
-
+app.get("/", async (req, res) => {
+    return res.json({ hi: "hello world" });
+}
+);
 
 // Fetch and store data before starting the server
 // fetchAndStoreMenuData()
