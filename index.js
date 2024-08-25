@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 require('dotenv').config();
 const cors = require('cors');
+const app = express();
+
 app.use(cors({
     origin: 'http://localhost:1234',  // Allow requests from this origin
     methods: 'GET,POST,PUT,DELETE',   // Specify allowed methods
@@ -91,7 +93,6 @@ async function fetchAndStoreMenuData() {
     }
 }
 // Express Server Setup
-const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/api/restaurant/menu/:restaurantId', async (req, res) => {
