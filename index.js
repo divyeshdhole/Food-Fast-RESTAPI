@@ -5,7 +5,6 @@ require('dotenv').config();
 const cors = require('cors');
 const app = express();
 
-const cors = require('cors');
 
 const allowedOrigins = [
     'https://food-fast-react-app.vercel.app',
