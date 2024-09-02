@@ -5,10 +5,23 @@ require('dotenv').config();
 const cors = require('cors');
 const app = express();
 
+const cors = require('cors');
+
+const allowedOrigins = [
+    'https://food-fast-react-app.vercel.app',
+    'http://localhost:3000/'
+];
+
 app.use(cors({
-    origin: 'http://localhost:1234',  // Allow requests from this origin
-    methods: 'GET,POST,PUT,DELETE',   // Specify allowed methods
-    allowedHeaders: 'Content-Type,Authorization'  // Specify allowed headers
+    origin: (origin, callback) => {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true); // Allow the request
+        } else {
+            callback(new Error('Not allowed by CORS')); // Reject the request
+        }
+    },
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization'
 }));
 
 const connectionString = process.env.MONGO_URL || "mongodb://localhost:27017/swiggyData"
